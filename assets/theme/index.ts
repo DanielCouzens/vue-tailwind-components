@@ -6,8 +6,6 @@ import brandTheme from './default';
 
 const theme = _.merge(defaultTheme, brandTheme);
 
-console.log(theme)
-
 export default {
     ...theme,
 }
