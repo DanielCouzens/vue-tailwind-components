@@ -1,42 +1,187 @@
 <template>
-  <div>
-    <header class="bg-primary p-14 border-b-8 border-secondary flex justify-between items-center">
-      <div class="bg-white p-4 rounded border border-black">
-        Header
+  <main-header :theme="state" />
+  <main>
+    <div class="container">
+      <div class="p-one">
+        <h2>P</h2>
       </div>
-      <custom-button variant="secondary">secondary button</custom-button></header>
-      <div class="m-14 bg-secondary p-6 rounded-tl-3xl rounded-tr-3xl"><p class="bg-white p-2 rounded border-black border w-fit">top bar</p></div>
-      <div class="flex flex-col gap-4 w-1/2 m-14">
-        <div class="flex flex-col gap-4 mb-10">
-          <h1 class="text-3xl font-bold ">Proof of concept</h1>
-          <p>A custom button that uses the custom brand color</p>
-          <custom-button >primary button</custom-button>
-        </div>
-        <div class="flex flex-col gap-4 border-2 border-black p-4 rounded-3xl shadow-primaryShadow">
-          <h2 class="text-lg font-bold">Default agora color</h2>
-          <p>A custom button that uses the default agora color</p>
-          <p>It may be useful to have default styles that don't change e.g shadows. All the shadows on this page come from the default agora theme</p>
-          <custom-button variant="agora">outline button</custom-button>
-        </div>
-        <div class="flex flex-col gap-4 border-2 border-black p-4 rounded-3xl shadow-primaryShadow">
-          <h2 class="text-lg font-bold">Default tailwind colors</h2>
-          <p>Custom buttons that use default tailwind colors</p>
-          <div class="flex gap-4">
-            <custom-button variant="outline">outline button</custom-button>
-            <custom-button variant="circle">Y</custom-button>
-            <custom-button variant="square">N</custom-button>
-          </div>
-        </div>
+      <div class="p-two">
+        <h2>S</h2>
+      </div>
+      <div class="p-three">
+        <h2>T</h2>
       </div>
     </div>
-  </template>
+    <!-- <div class="container">
+      <base-tag variant="primary">Primary</base-tag>
+      <base-tag variant="secondary">Secondary</base-tag>
+      <base-tag variant="warning">Warning</base-tag>
+      <base-tag variant="danger">Danger</base-tag>
+    </div> -->
+    <form action="" class="form">
+      <div class="form-container">
+      <div class="wrap">
+        <label for="primary">Primary</label>
+        <input
+          id="primary"
+          class="input"
+          type="text"
+          v-model="state.bgPrimary"
+        />
+      </div>
+      <div class="wrap">
+        <label for="secondary">Secondary</label>
+        <input
+          id="secondary"
+          class="input"
+          type="text"
+          v-model="state.bgSecondary"
+        />
+      </div>
+      <div class="wrap">
+        <label for="tersery">Tersery</label>
+        <input
+          id="tersery"
+          class="input"
+          type="text"
+          v-model="state.bgTersery"
+        />
+      </div>
+      <div class="wrap">
+        <label for="primary_txt">Primary Text</label>
+        <input
+          id="primary_txt"
+          class="input"
+          type="text"
+          v-model="state.txtPrimary"
+        />
+      </div>
+      <div class="wrap">
+        <label for="secondary_text">Secondary Text</label>
+        <input
+          id="secondary_text"
+          class="input"
+          type="text"
+          v-model="state.txtSecondary"
+        />
+      </div>
+      <div class="wrap">
+        <label for="tersery_text">Tersery Text</label>
+        <input
+          id="tersery_text"
+          class="input"
+          type="text"
+          v-model="state.txtTersery"
+        />
+      </div>
 
-<script>
-export default {
-  setup() {
-    return {}
-  },
+      </div>
+      <div>
+
+        <base-button variant="danger" @click="updateStyles">Submit</base-button>
+      </div>
+    </form>
+  </main>
+</template>
+
+<script setup>
+import { reactive, onMounted } from 'vue'
+
+const state = reactive({
+  bgPrimary: '',
+  bgSecondary: '',
+  bgTersery: '',
+  txtPrimary: '',
+  txtSecondary: '',
+  txtTersery: '',
+})
+
+onMounted(() => {
+  const styles = JSON.parse(localStorage.getItem('localStorageStyles'))
+  if (styles) {
+    state.bgPrimary = styles.bgPrimary
+    state.bgSecondary = styles.bgSecondary
+    state.bgTersery = styles.bgTersery
+    state.txtPrimary = styles.txtPrimary
+    state.txtSecondary = styles.txtSecondary
+    state.txtTersery = styles.txtTersery
+  }
+})
+
+const updateStyles = (e) => {
+  e.preventDefault()
+  localStorage.setItem('localStorageStyles', JSON.stringify(state))
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.p-one, .p-two, .p-three {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 4rem;
+  height: 4rem;
+  padding: 1rem;
+  border-radius: 0.4rem;
+  border: 1px solid var(--input-border-color);
+}
+.p-one h2 {
+  color: v-bind('state.txtPrimary');
+}
+.p-two h2 {
+  color: v-bind('state.txtSecondary');
+}
+.p-three h2 {
+  color: v-bind('state.txtTersery');
+}
+.p-one {
+  background-color: v-bind('state.bgPrimary');
+  color: v-bind('state.bgPrimary');
+}
+.p-two {
+  background-color: v-bind('state.bgSecondary');
+  color: v-bind('state.bgSecondary');
+}
+.p-three {
+  background-color: v-bind('state.bgTersery');
+  color: v-bind('state.bgTersery');
+}
+.container {
+  width: 300px;
+  margin: 2rem auto;
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(3, 1fr);
+  justify-content: center;
+}
+.wrap {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--input-border-color);
+  padding: 0.6rem 1rem;
+  border-radius: 0.4rem;
+  justify-content: space-between;
+  align-items: center;
+  margin: 2rem;
+}
+.form-container {
+  display: flex;
+  padding: 0.6rem 1rem;
+  border-radius: 0.4rem;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+}
+.input {
+  border: 1px solid var(--input-border-color);
+  padding: 0.6rem 1rem;
+  border-radius: 0.4rem;
+  width: 100%;
+}
+</style>
