@@ -1,7 +1,6 @@
 <template>
-  <div :class="['baseVariant', variant]">
+  <div :class="['baseVariant', variant, tag]">
     <slot />
-    <!-- <slot :variantStyle="['baseVariant', variant]"/> -->
   </div>
 </template>
 
@@ -14,6 +13,7 @@ const props = defineProps({
       ['primary', 'secondary', 'warning', 'danger'].includes(value),
   },
 })
+
 </script>
 
 <style scoped>
@@ -22,6 +22,13 @@ const props = defineProps({
   height: fit-content;
   color: var(--variant-text-color);
   background-color: var(--variant-bg-color);
+}
+
+.button {
+  border: none;
+  padding: 0.6rem 1rem;
+  width: fit-content;
+  height: fit-content;
 }
 .baseVariant :hover {
   color: var(--variant-text-color);

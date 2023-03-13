@@ -1,9 +1,9 @@
 <template>
-  <variant-styles :variant="variant">
-    <div>
+  <variant-styles-provider :variant="variant" :tag="tag">
+    <div  :class="['baseTag']">
       <slot />
     </div>
-  </variant-styles>
+  </variant-styles-provider>
 </template>
 
 <script setup>
@@ -18,9 +18,4 @@ const props = defineProps({
 </script>
 
 <style scoped>
-.baseTag {
-  border: none;
-  border-radius: 1.5rem;
-  padding: 0.3rem 0.8rem;
-}
 </style>

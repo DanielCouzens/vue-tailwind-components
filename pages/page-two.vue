@@ -1,6 +1,6 @@
 <template>
   <div>
-    <main-header :theme="state" />
+    <main-header :theme="styles" />
     <main class="main">
       <div class="container">
         <base-button variant="primary">Primary</base-button>
@@ -8,33 +8,23 @@
         <base-button variant="warning">Warning</base-button>
         <base-button variant="danger">Danger</base-button>
       </div>
+       <!-- <div class="container">
+      <base-tag variant="primary">Primary</base-tag>
+      <base-tag variant="secondary">Secondary</base-tag>
+      <base-tag variant="warning">Warning</base-tag>
+      <base-tag variant="danger">Danger</base-tag>
+    </div> -->
     </main>
   </div>
 </template>
 
 <script setup>
-import { reactive, onMounted } from 'vue'
+import { computed } from 'vue'
 
-const state = reactive({
-  bgPrimary: '',
-  bgSecondary: '',
-  bgTersery: '',
-  txtPrimary: '',
-  txtSecondary: '',
-  txtTersery: '',
+const styles = computed(() => {
+  return JSON.parse(localStorage.getItem('localStorageStyles')) || {}
 })
 
-onMounted(() => {
-  const styles = JSON.parse(localStorage.getItem('localStorageStyles'))
-  if (styles) {
-    state.bgPrimary = styles.bgPrimary
-    state.bgSecondary = styles.bgSecondary
-    state.bgTersery = styles.bgTersery
-    state.txtPrimary = styles.txtPrimary
-    state.txtSecondary = styles.txtSecondary
-    state.txtTersery = styles.txtTersery
-  }
-})
 </script>
 
 <style scoped>

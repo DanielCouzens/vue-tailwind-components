@@ -12,12 +12,6 @@
         <h2>T</h2>
       </div>
     </div>
-    <!-- <div class="container">
-      <base-tag variant="primary">Primary</base-tag>
-      <base-tag variant="secondary">Secondary</base-tag>
-      <base-tag variant="warning">Warning</base-tag>
-      <base-tag variant="danger">Danger</base-tag>
-    </div> -->
     <form action="" class="form">
       <div class="form-container">
       <div class="wrap">
