@@ -74,10 +74,8 @@
           v-model="state.txtTersery"
         />
       </div>
-
       </div>
       <div>
-
         <base-button variant="danger" @click="updateStyles">Submit</base-button>
       </div>
     </form>
@@ -95,10 +93,6 @@ const state = reactive({
   txtSecondary: '',
   txtTersery: '',
 })
-
-// const store = useStyleStore()/
-
-// console.log(store)
 
 onMounted(() => {
   const styles = JSON.parse(localStorage.getItem('localStorageStyles'))

@@ -35,11 +35,6 @@ onMounted(() => {
     state.txtTersery = styles.txtTersery
   }
 })
-
-const updateStyles = (e) => {
-  e.preventDefault()
-  localStorage.setItem('localStorageStyles', JSON.stringify(state))
-}
 </script>
 
 <style scoped>
