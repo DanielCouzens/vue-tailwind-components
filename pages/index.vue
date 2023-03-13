@@ -96,6 +96,10 @@ const state = reactive({
   txtTersery: '',
 })
 
+// const store = useStyleStore()/
+
+// console.log(store)
+
 onMounted(() => {
   const styles = JSON.parse(localStorage.getItem('localStorageStyles'))
   if (styles) {
