@@ -1,6 +1,11 @@
 <template>
   <main-header :theme="state" />
   <main>
+    <!-- <slot-test>
+      <h2>
+        Test
+      </h2>
+    </slot-test> -->
     <div class="container">
       <div class="p-one">
         <h2>P</h2>
@@ -14,8 +19,8 @@
     </div>
     <form action="" class="form">
       <div class="form-container">
-      <div class="wrap">
-        <label for="primary">Primary</label>
+      <div class="input-wrap">
+        <label for="primary">Primary Background</label>
         <input
           id="primary"
           class="input"
@@ -23,8 +28,8 @@
           v-model="state.bgPrimary"
         />
       </div>
-      <div class="wrap">
-        <label for="secondary">Secondary</label>
+      <div class="input-wrap">
+        <label for="secondary">Secondary Background</label>
         <input
           id="secondary"
           class="input"
@@ -32,8 +37,8 @@
           v-model="state.bgSecondary"
         />
       </div>
-      <div class="wrap">
-        <label for="tersery">Tersery</label>
+      <div class="input-wrap">
+        <label for="tersery">Tersery Background</label>
         <input
           id="tersery"
           class="input"
@@ -41,7 +46,9 @@
           v-model="state.bgTersery"
         />
       </div>
-      <div class="wrap">
+      </div>
+      <div class="form-container">
+      <div class="input-wrap">
         <label for="primary_txt">Primary Text</label>
         <input
           id="primary_txt"
@@ -50,7 +57,7 @@
           v-model="state.txtPrimary"
         />
       </div>
-      <div class="wrap">
+      <div class="input-wrap">
         <label for="secondary_text">Secondary Text</label>
         <input
           id="secondary_text"
@@ -59,7 +66,7 @@
           v-model="state.txtSecondary"
         />
       </div>
-      <div class="wrap">
+      <div class="input-wrap">
         <label for="tersery_text">Tersery Text</label>
         <input
           id="tersery_text"
@@ -146,7 +153,7 @@ const updateStyles = (e) => {
   grid-template-columns: repeat(3, 1fr);
   justify-content: center;
 }
-.wrap {
+.input-wrap {
   padding: 1rem;
   display: flex;
   flex-direction: column;
@@ -156,11 +163,12 @@ const updateStyles = (e) => {
   display: flex;
   flex-direction: column;
   border: 1px solid var(--input-border-color);
-  padding: 0.6rem 1rem;
+  padding: 1rem 1rem 2rem;
   border-radius: 0.4rem;
   justify-content: space-between;
   align-items: center;
-  margin: 2rem;
+  margin: 2rem auto;
+  width: 60%;
 }
 .form-container {
   display: flex;
